@@ -39,7 +39,7 @@ export class APIController {
   }
   @Get('/mock/:level1')
   async getLevel1Api(ctx: Context): Promise<any> {
-    console.info('ctx.params----------', ctx.params);
+    console.info('ctx.params---test-------', ctx.params);
     return { success: true, message: 'OK', data: ctx.params };
   }
   @Get('/mock/:level1/:level2')
