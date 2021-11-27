@@ -13,11 +13,20 @@ export class APIController {
 
   @Post('/mock/:level1')
   async createLevel1Api(ctx: Context): Promise<any> {
-    console.info('ctx.params----------', ctx.params);
-    console.info('ctx.request.body----------', ctx.request.body);
-    const res = await this.mockDataService.saveMockData();
-    console.info('res-----------------', res);
-    return { success: true, message: 'OK', data: ctx.params };
+    const ctxParams = ctx.params;
+    const ctxReqBody = ctx.request.body;
+    console.info('ctxParams------------', ctxParams);
+    console.info('ctxReqBody------------', ctxReqBody);
+    await this.mockDataService.saveMockData(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5,
+      ctxParams?.level6,
+      ctxReqBody?.mockData
+    );
+    return { success: true, message: 'OK' };
   }
   @Post('/mock/:level1/:level2')
   async createLevel2Api(ctx: Context): Promise<any> {
@@ -39,8 +48,16 @@ export class APIController {
   }
   @Get('/mock/:level1')
   async getLevel1Api(ctx: Context): Promise<any> {
-    console.info('ctx.params---test-------', ctx.params);
-    return { success: true, message: 'OK', data: ctx.params };
+    const ctxParams = ctx.params;
+    console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData(
+      ctxParams?.level1
+    );
+    return {
+      success: true,
+      message: 'OK',
+      data: JSON.parse(mockDataRes.res_data),
+    };
   }
   @Get('/mock/:level1/:level2')
   async getLevel2Api(ctx: Context): Promise<any> {
