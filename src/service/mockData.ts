@@ -34,12 +34,38 @@ export class MockDataService {
     console.log('mockData id = ', mockDataResult.id);
   }
 
+  // update
+  async deleteMockData(id?: number) {
+    console.info('id--------------', id);
+    let mockDataToRemove = await this.mockDataModel.findOne(id);
+    await this.mockDataModel.remove(mockDataToRemove);
+  }
+
+  // update
+  async updateMockData(id?: number, res_data?: string) {
+    console.info('id--------------', id);
+    let mockDataToUpdate = await this.mockDataModel.findOne(id);
+    console.info('mockDataToUpdate--------------', mockDataToUpdate);
+    mockDataToUpdate.res_data = res_data;
+
+    await this.mockDataModel.save(mockDataToUpdate);
+  }
+
   // find
   async findMockData(level1?: string) {
     let mockDataRes = await this.mockDataModel.findOne({
       level1,
     });
-    console.info('mockDataRes-------service------', mockDataRes);
+    // console.info('mockDataRes-------service------', mockDataRes);
+    return mockDataRes;
+  }
+
+  // find
+  async findMockDataById(id?: number) {
+    let mockDataRes = await this.mockDataModel.findOne({
+      id,
+    });
+    // console.info('mockDataRes-------service------', mockDataRes);
     return mockDataRes;
   }
 }
