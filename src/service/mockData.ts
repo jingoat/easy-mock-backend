@@ -51,12 +51,50 @@ export class MockDataService {
     await this.mockDataModel.save(mockDataToUpdate);
   }
 
-  // find
-  async findMockData(level1?: string) {
+  // find1
+  async findMockData1(level1: string) {
     let mockDataRes = await this.mockDataModel.findOne({
       level1,
     });
-    // console.info('mockDataRes-------service------', mockDataRes);
+    console.info('mockDataRes-------findMockData1------', mockDataRes);
+    return mockDataRes;
+  }
+
+  // find2
+  async findMockData2(level1: string, level2: string) {
+    let mockDataRes = await this.mockDataModel.findOne({
+      level1,
+      level2,
+    });
+    console.info('mockDataRes-------findMockData2------', mockDataRes);
+    return mockDataRes;
+  }
+
+  // find3
+  async findMockData3(level1: string, level2: string, level3: string) {
+    let mockDataRes = await this.mockDataModel.findOne({
+      level1,
+      level2,
+      level3,
+    });
+    console.info('mockDataRes-------findMockData3------', mockDataRes);
+    return mockDataRes;
+  }
+
+  // find4
+  async findMockData4(
+    level1: string,
+    level2: string,
+    level3: string,
+    level4: string
+  ) {
+    let mockDataRes = await this.mockDataModel.findOne({
+      level1,
+      level2,
+      level3,
+      level4,
+    });
+    console.info('mockDataRes-------findMockData4------', mockDataRes);
     return mockDataRes;
   }
 
