@@ -3,9 +3,9 @@ import {
   Controller,
   Post,
   Provide,
-  Get,
   Put,
   Del,
+  All,
 } from '@midwayjs/decorator';
 import { Context } from 'egg';
 import { MockDataService } from '../service/mockData';
@@ -19,7 +19,7 @@ export class APIController {
   @Inject()
   mockDataService: MockDataService;
 
-  @Post('/mock/:level1')
+  @Post('/add/:level1')
   async createLevel1Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
@@ -42,7 +42,7 @@ export class APIController {
     );
     return { success: true, message: 'OK', code: 0 };
   }
-  @Post('/mock/:level1/:level2')
+  @Post('/add/:level1/:level2')
   async createLevel2Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
@@ -66,7 +66,7 @@ export class APIController {
     );
     return { success: true, message: 'OK', code: 0 };
   }
-  @Post('/mock/:level1/:level2/:level3')
+  @Post('/add/:level1/:level2/:level3')
   async createLevel3Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
@@ -91,7 +91,7 @@ export class APIController {
     );
     return { success: true, message: 'OK', code: 0 };
   }
-  @Post('/mock/:level1/:level2/:level3/:level4')
+  @Post('/add/:level1/:level2/:level3/:level4')
   async createLevel4Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
@@ -117,7 +117,7 @@ export class APIController {
     );
     return { success: true, message: 'OK', code: 0 };
   }
-  @Get('/mock/:level1')
+  @All('/mock/:level1')
   async getLevel1Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     // console.info('ctxParams------level1-----', ctxParams);
@@ -138,7 +138,7 @@ export class APIController {
       data: JSON.parse(mockDataRes?.res_data),
     };
   }
-  @Get('/mock/:level1/:level2')
+  @All('/mock/:level1/:level2')
   async getLevel2Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     // console.info('ctxParams------level1-----', ctxParams);
@@ -160,7 +160,7 @@ export class APIController {
       data: JSON.parse(mockDataRes?.res_data),
     };
   }
-  @Get('/mock/:level1/:level2/:level3')
+  @All('/mock/:level1/:level2/:level3')
   async getLevel3Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     // console.info('ctxParams------level1-----', ctxParams);
@@ -183,7 +183,7 @@ export class APIController {
       data: JSON.parse(mockDataRes?.res_data),
     };
   }
-  @Get('/mock/:level1/:level2/:level3/:level4')
+  @All('/mock/:level1/:level2/:level3/:level4')
   async getLevel4Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     // console.info('ctxParams------level1-----', ctxParams);
@@ -207,7 +207,7 @@ export class APIController {
       data: JSON.parse(mockDataRes?.res_data),
     };
   }
-  @Put('/mock/:id')
+  @Put('/update/:id')
   async updateLevel1Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
@@ -225,7 +225,7 @@ export class APIController {
     );
     return { success: true, message: '更新成功', code: 0 };
   }
-  @Del('/mock/:id')
+  @Del('/delete/:id')
   async deleteLevel1Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
