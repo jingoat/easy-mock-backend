@@ -51,6 +51,13 @@ export class MockDataService {
     await this.mockDataModel.save(mockDataToUpdate);
   }
 
+  // findAll
+  async findAllMockData() {
+    let allMockDataRes = await this.mockDataModel.find();
+    // console.info('mockDataRes-------findMockData1------', allMockDataRes);
+    return allMockDataRes;
+  }
+
   // find1
   async findMockData1(level1: string) {
     let mockDataRes = await this.mockDataModel.findOne({

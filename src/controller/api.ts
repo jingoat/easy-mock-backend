@@ -6,6 +6,7 @@ import {
   Put,
   Del,
   All,
+  Get,
 } from '@midwayjs/decorator';
 import { Context } from 'egg';
 import { MockDataService } from '../service/mockData';
@@ -117,6 +118,17 @@ export class APIController {
     );
     return { success: true, message: 'OK', code: 0 };
   }
+
+  @Get('/getAll')
+  async getAllMockData(ctx: Context): Promise<any> {
+    const mockDataRes = await this.mockDataService.findAllMockData();
+    return {
+      success: true,
+      message: 'OK',
+      data: mockDataRes,
+    };
+  }
+
   @All('/mock/:level1')
   async getLevel1Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
