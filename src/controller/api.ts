@@ -126,6 +126,102 @@ export class APIController {
       success: true,
       message: 'OK',
       data: mockDataRes,
+      code: 0,
+    };
+  }
+
+  @Get('/find/:level1')
+  async fondLevel1Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    // console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData1(
+      ctxParams?.level1
+    );
+    if (!mockDataRes) {
+      return {
+        success: true,
+        message: 'OK',
+        code: 1,
+        data: '接口不存在',
+      };
+    }
+    return {
+      success: true,
+      message: 'OK',
+      data: [mockDataRes],
+      code: 0,
+    };
+  }
+  @Get('/find/:level1/:level2')
+  async findLevel2Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    // console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData2(
+      ctxParams?.level1,
+      ctxParams?.level2
+    );
+    if (!mockDataRes) {
+      return {
+        success: true,
+        message: 'OK',
+        code: 1,
+        data: '接口不存在',
+      };
+    }
+    return {
+      success: true,
+      message: 'OK',
+      data: [mockDataRes],
+      code: 0,
+    };
+  }
+  @Get('/find/:level1/:level2/:level3')
+  async findLevel3Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    // console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData3(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3
+    );
+    if (!mockDataRes) {
+      return {
+        success: true,
+        message: 'OK',
+        code: 1,
+        data: '接口不存在',
+      };
+    }
+    return {
+      success: true,
+      message: 'OK',
+      data: [mockDataRes],
+      code: 0,
+    };
+  }
+  @Get('/find/:level1/:level2/:level3/:level4')
+  async findLevel4Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    // console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData4(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4
+    );
+    if (!mockDataRes) {
+      return {
+        success: true,
+        message: 'OK',
+        code: 1,
+        data: '接口不存在',
+      };
+    }
+    return {
+      success: true,
+      message: 'OK',
+      data: [mockDataRes],
+      code: 0,
     };
   }
 
@@ -148,6 +244,7 @@ export class APIController {
       success: true,
       message: 'OK',
       data: JSON.parse(mockDataRes?.res_data),
+      code: 0,
     };
   }
   @All('/mock/:level1/:level2')
@@ -170,6 +267,7 @@ export class APIController {
       success: true,
       message: 'OK',
       data: JSON.parse(mockDataRes?.res_data),
+      code: 0,
     };
   }
   @All('/mock/:level1/:level2/:level3')
@@ -193,6 +291,7 @@ export class APIController {
       success: true,
       message: 'OK',
       data: JSON.parse(mockDataRes?.res_data),
+      code: 0,
     };
   }
   @All('/mock/:level1/:level2/:level3/:level4')
@@ -217,6 +316,7 @@ export class APIController {
       success: true,
       message: 'OK',
       data: JSON.parse(mockDataRes?.res_data),
+      code: 0,
     };
   }
   @Put('/update/:id')
