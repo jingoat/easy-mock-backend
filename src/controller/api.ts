@@ -47,8 +47,8 @@ export class APIController {
   async createLevel2Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
-    console.info('ctx.params----------', ctxParams);
-    console.info('ctx.request.body----------', ctx.request.body);
+    // console.info('ctx.params----------', ctxParams);
+    // console.info('ctx.request.body----------', ctx.request.body);
     const mockDataRes = await this.mockDataService.findMockData2(
       ctxParams?.level1,
       ctxParams?.level2
@@ -71,8 +71,8 @@ export class APIController {
   async createLevel3Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
-    console.info('ctx.params----------', ctxParams);
-    console.info('ctx.request.body----------', ctx.request.body);
+    // console.info('ctx.params----------', ctxParams);
+    // console.info('ctx.request.body----------', ctx.request.body);
     const mockDataRes = await this.mockDataService.findMockData3(
       ctxParams?.level1,
       ctxParams?.level2,
@@ -96,8 +96,8 @@ export class APIController {
   async createLevel4Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
-    console.info('ctx.params----------', ctxParams);
-    console.info('ctx.request.body----------', ctx.request.body);
+    // console.info('ctx.params----------', ctxParams);
+    // console.info('ctx.request.body----------', ctx.request.body);
     const mockDataRes = await this.mockDataService.findMockData4(
       ctxParams?.level1,
       ctxParams?.level2,
@@ -323,8 +323,8 @@ export class APIController {
   async updateLevel1Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
     const ctxReqBody = ctx.request.body;
-    console.info('ctxParams------------', ctxParams);
-    console.info('ctxReqBody------------', ctxReqBody);
+    // console.info('ctxParams------------', ctxParams);
+    // console.info('ctxReqBody------------', ctxReqBody);
     const mockDataRes = await this.mockDataService.findMockDataById(
       ctxParams?.id
     );
@@ -340,9 +340,9 @@ export class APIController {
   @Del('/delete/:id')
   async deleteLevel1Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
-    const ctxReqBody = ctx.request.body;
-    console.info('ctxParams------------', ctxParams);
-    console.info('ctxReqBody------------', ctxReqBody);
+    // const ctxReqBody = ctx.request.body;
+    // console.info('ctxParams------------', ctxParams);
+    // console.info('ctxReqBody------------', ctxReqBody);
     const mockDataRes = await this.mockDataService.findMockDataById(
       ctxParams?.id
     );

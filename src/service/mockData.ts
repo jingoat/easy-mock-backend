@@ -28,24 +28,25 @@ export class MockDataService {
     mockData.level6 = level6;
     mockData.res_data = res_data;
     // save entity
-    const mockDataResult = await this.mockDataModel.save(mockData);
+    await this.mockDataModel.save(mockData);
+    // const mockDataResult = await this.mockDataModel.save(mockData);
 
     // save success
-    console.log('mockData id = ', mockDataResult.id);
+    // console.log('mockData id = ', mockDataResult.id);
   }
 
   // update
   async deleteMockData(id?: number) {
-    console.info('id--------------', id);
+    // console.info('id--------------', id);
     let mockDataToRemove = await this.mockDataModel.findOne(id);
     await this.mockDataModel.remove(mockDataToRemove);
   }
 
   // update
   async updateMockData(id?: number, res_data?: string) {
-    console.info('id--------------', id);
+    // console.info('id--------------', id);
     let mockDataToUpdate = await this.mockDataModel.findOne(id);
-    console.info('mockDataToUpdate--------------', mockDataToUpdate);
+    // console.info('mockDataToUpdate--------------', mockDataToUpdate);
     mockDataToUpdate.res_data = res_data;
 
     await this.mockDataModel.save(mockDataToUpdate);
@@ -63,7 +64,7 @@ export class MockDataService {
     let mockDataRes = await this.mockDataModel.findOne({
       level1,
     });
-    console.info('mockDataRes-------findMockData1------', mockDataRes);
+    // console.info('mockDataRes-------findMockData1------', mockDataRes);
     return mockDataRes;
   }
 
@@ -73,7 +74,7 @@ export class MockDataService {
       level1,
       level2,
     });
-    console.info('mockDataRes-------findMockData2------', mockDataRes);
+    // console.info('mockDataRes-------findMockData2------', mockDataRes);
     return mockDataRes;
   }
 
@@ -84,7 +85,7 @@ export class MockDataService {
       level2,
       level3,
     });
-    console.info('mockDataRes-------findMockData3------', mockDataRes);
+    // console.info('mockDataRes-------findMockData3------', mockDataRes);
     return mockDataRes;
   }
 
@@ -101,7 +102,7 @@ export class MockDataService {
       level3,
       level4,
     });
-    console.info('mockDataRes-------findMockData4------', mockDataRes);
+    // console.info('mockDataRes-------findMockData4------', mockDataRes);
     return mockDataRes;
   }
 
