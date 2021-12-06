@@ -241,10 +241,7 @@ export class APIController {
       };
     }
     return {
-      success: true,
-      message: 'OK',
-      data: JSON.parse(mockDataRes?.res_data),
-      code: 0,
+      ...JSON.parse(mockDataRes?.res_data),
     };
   }
   @All('/mock/:level1/:level2')
@@ -264,10 +261,7 @@ export class APIController {
       };
     }
     return {
-      success: true,
-      message: 'OK',
-      data: JSON.parse(mockDataRes?.res_data),
-      code: 0,
+      ...JSON.parse(mockDataRes?.res_data),
     };
   }
   @All('/mock/:level1/:level2/:level3')
@@ -288,10 +282,7 @@ export class APIController {
       };
     }
     return {
-      success: true,
-      message: 'OK',
-      data: JSON.parse(mockDataRes?.res_data),
-      code: 0,
+      ...JSON.parse(mockDataRes?.res_data),
     };
   }
   @All('/mock/:level1/:level2/:level3/:level4')
@@ -313,10 +304,7 @@ export class APIController {
       };
     }
     return {
-      success: true,
-      message: 'OK',
-      data: JSON.parse(mockDataRes?.res_data),
-      code: 0,
+      ...JSON.parse(mockDataRes?.res_data),
     };
   }
   @Put('/update/:id')
