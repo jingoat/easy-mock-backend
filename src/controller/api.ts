@@ -118,6 +118,61 @@ export class APIController {
     );
     return { success: true, message: 'OK', code: 0 };
   }
+  @Post('/add/:level1/:level2/:level3/:level4/:level5')
+  async createLevel5Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    const ctxReqBody = ctx.request.body;
+    // console.info('ctx.params----------', ctxParams);
+    // console.info('ctx.request.body----------', ctx.request.body);
+    const mockDataRes = await this.mockDataService.findMockData5(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5
+    );
+    if (mockDataRes && mockDataRes?.res_data) {
+      return { success: false, message: '您创建的接口已存在', code: 1 };
+    }
+    await this.mockDataService.saveMockData(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5,
+      ctxParams?.level6,
+      ctxReqBody?.mockData
+    );
+    return { success: true, message: 'OK', code: 0 };
+  }
+  @Post('/add/:level1/:level2/:level3/:level4/:level5/:level6')
+  async createLevel6Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    const ctxReqBody = ctx.request.body;
+    // console.info('ctx.params----------', ctxParams);
+    // console.info('ctx.request.body----------', ctx.request.body);
+    const mockDataRes = await this.mockDataService.findMockData6(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5,
+      ctxParams?.level6
+    );
+    if (mockDataRes && mockDataRes?.res_data) {
+      return { success: false, message: '您创建的接口已存在', code: 1 };
+    }
+    await this.mockDataService.saveMockData(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5,
+      ctxParams?.level6,
+      ctxReqBody?.mockData
+    );
+    return { success: true, message: 'OK', code: 0 };
+  }
 
   @Get('/getAll')
   async getAllMockData(ctx: Context): Promise<any> {
@@ -225,6 +280,61 @@ export class APIController {
     };
   }
 
+  @Get('/find/:level1/:level2/:level3/:level4/:level5')
+  async findLevel5Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    // console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData5(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5
+    );
+    if (!mockDataRes) {
+      return {
+        success: true,
+        message: 'OK',
+        code: 1,
+        data: '接口不存在',
+      };
+    }
+    return {
+      success: true,
+      message: 'OK',
+      data: [mockDataRes],
+      code: 0,
+    };
+  }
+
+  @Get('/find/:level1/:level2/:level3/:level4/:level5/:level6')
+  async findLevel6Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    // console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData6(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5,
+      ctxParams?.level6
+    );
+    if (!mockDataRes) {
+      return {
+        success: true,
+        message: 'OK',
+        code: 1,
+        data: '接口不存在',
+      };
+    }
+    return {
+      success: true,
+      message: 'OK',
+      data: [mockDataRes],
+      code: 0,
+    };
+  }
+
   @All('/mock/:level1')
   async getLevel1Api(ctx: Context): Promise<any> {
     const ctxParams = ctx.params;
@@ -294,6 +404,53 @@ export class APIController {
       ctxParams?.level2,
       ctxParams?.level3,
       ctxParams?.level4
+    );
+    if (!mockDataRes) {
+      return {
+        success: true,
+        message: 'OK',
+        code: 1,
+        data: '接口不存在',
+      };
+    }
+    return {
+      ...JSON.parse(mockDataRes?.res_data),
+    };
+  }
+  @All('/mock/:level1/:level2/:level3/:level4/:level5')
+  async getLevel5Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    // console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData5(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5
+    );
+    if (!mockDataRes) {
+      return {
+        success: true,
+        message: 'OK',
+        code: 1,
+        data: '接口不存在',
+      };
+    }
+    return {
+      ...JSON.parse(mockDataRes?.res_data),
+    };
+  }
+  @All('/mock/:level1/:level2/:level3/:level4/:level5/:level6')
+  async getLevel6Api(ctx: Context): Promise<any> {
+    const ctxParams = ctx.params;
+    // console.info('ctxParams------level1-----', ctxParams);
+    const mockDataRes = await this.mockDataService.findMockData6(
+      ctxParams?.level1,
+      ctxParams?.level2,
+      ctxParams?.level3,
+      ctxParams?.level4,
+      ctxParams?.level5,
+      ctxParams?.level6
     );
     if (!mockDataRes) {
       return {

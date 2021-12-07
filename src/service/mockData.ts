@@ -105,6 +105,44 @@ export class MockDataService {
     // console.info('mockDataRes-------findMockData4------', mockDataRes);
     return mockDataRes;
   }
+  // find5
+  async findMockData5(
+    level1: string,
+    level2: string,
+    level3: string,
+    level4: string,
+    level5: string
+  ) {
+    let mockDataRes = await this.mockDataModel.findOne({
+      level1,
+      level2,
+      level3,
+      level4,
+      level5,
+    });
+    // console.info('mockDataRes-------findMockData5------', mockDataRes);
+    return mockDataRes;
+  }
+  // find6
+  async findMockData6(
+    level1: string,
+    level2: string,
+    level3: string,
+    level4: string,
+    level5: string,
+    level6: string
+  ) {
+    let mockDataRes = await this.mockDataModel.findOne({
+      level1,
+      level2,
+      level3,
+      level4,
+      level5,
+      level6,
+    });
+    // console.info('mockDataRes-------findMockData6------', mockDataRes);
+    return mockDataRes;
+  }
 
   // find
   async findMockDataById(id?: number) {
